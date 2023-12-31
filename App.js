@@ -1,20 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from "react";
+import { Text } from "react-native";
+import * as Font from 'expo-font';
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import MyForm from "./screens/HelperScreen";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+const App = () => {
+
+  const [dataLoaded, setDataLoaded] = React.useState(false);
+
+  React.useEffect(() => {
+    Font.loadAsync({
+      'Averta': require('./assets/fonts/Averta-Regular.otf'),
+    }).then(() => {
+      setDataLoaded(true);
+    });
+  }, []);
+
+
+
+
+
+
+  if (dataLoaded === false) {
+    return <Text>Loading...</Text>;
+  } else {
+    return (
+      <Provider store={store}>
+        <MyForm />
+      </Provider>
+    );
+  }
+
+
+
+};
+export default App;
