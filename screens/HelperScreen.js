@@ -59,6 +59,16 @@ const MyForm = () => {
                 dispatch(setCredit(parseInt(data)));
             }
         });
+
+        AsyncStorage.getItem('ambigram-selected-color').then((data) => {
+            console.log(data);
+            if (data === null || data === undefined) {
+                AsyncStorage.setItem('ambigram-selected-color', JSON.stringify(selectedColor));
+            } else {
+                dispatch(setColor(JSON.parse(data)));
+            }
+        });
+
     }, []);
 
 

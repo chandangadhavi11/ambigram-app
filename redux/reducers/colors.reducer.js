@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createSlice } from "@reduxjs/toolkit";
 
 
@@ -67,6 +68,7 @@ export const colorsReducer = createSlice({
         // assign the selected color to the selectedColor state
         setColor: (state, action) => {
             state.selectedColor = action.payload;
+            AsyncStorage.setItem('ambigram-selected-color', JSON.stringify(action.payload));
         },
     },
 });
