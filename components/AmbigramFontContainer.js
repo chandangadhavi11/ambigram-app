@@ -3,13 +3,14 @@ import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
 import { FontSize, FontFamily, ColorsLight, Padding } from "../GlobalStyles";
 import { createHapticsImpact } from "../utils/createHapticsImpact";
 import { useSelector } from "react-redux";
+import { getDimension } from "../data/DimensionData";
 
 const AmbigramFontContainer = ({ fontName, selected = false, onPress }) => {
   const { themeMode } = useSelector(state => state.theme);
 
   const styles = StyleSheet.create({
     fontText: {
-      fontSize: FontSize.size_xs,
+      fontSize: getDimension().LABEL_FONT_SIZE,
       letterSpacing: 1,
       textTransform: "uppercase",
       fontFamily: FontFamily.avertaDemoPECuttedDemo,
@@ -17,7 +18,7 @@ const AmbigramFontContainer = ({ fontName, selected = false, onPress }) => {
       textAlign: "left",
     },
     selectedFontText: {
-      fontSize: FontSize.size_xs,
+      fontSize: getDimension().LABEL_FONT_SIZE,
       letterSpacing: 1,
       textTransform: "uppercase",
       fontFamily: FontFamily.avertaDemoPECuttedDemo,

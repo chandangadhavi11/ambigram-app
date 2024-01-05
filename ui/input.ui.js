@@ -2,6 +2,8 @@ import React from 'react';
 import { TextInput, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
 import { getColor } from '../utils/getThemeColor';
+import { getDimension } from '../data/DimensionData';
+import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 
 const InputText = (
     { placeholder = "ENTER TEXT", }
@@ -14,11 +16,11 @@ const InputText = (
             borderWidth: 0.5,
             borderColor: getColor(themeMode).primary,
             backgroundColor: getColor(themeMode).background,
-            paddingVertical: 16,
-            paddingHorizontal: 16,
+            paddingVertical: getDimension().INPUT_TEXT_VERTICAL_PADDING,
+            paddingHorizontal: getDimension().INPUT_TEXT_HORIZONTAL_PADDING,
             color: getColor(themeMode).primary,
             fontFamily: 'Averta',
-            fontSize: 12,
+            fontSize: getDimension().INPUT_TEXT_FONT_SIZE,
             fontStyle: 'normal',
             fontWeight: '400',
             letterSpacing: 1,

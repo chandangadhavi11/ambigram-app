@@ -2,9 +2,13 @@ import { StyleSheet, Text } from "react-native";
 import { FontFamily, FontSize } from "../GlobalStyles";
 import { getColor } from "../utils/getThemeColor";
 import { useSelector } from "react-redux";
+import { getDimension } from "../data/DimensionData";
 
 
-export const Label = ({ color = "black", children, fontSize = 12 }) => {
+export const Label = ({ color = "black",
+    children,
+    fontSize = getDimension().LABEL_FONT_SIZE
+}) => {
 
     const styles = StyleSheet.create({
         heading: {

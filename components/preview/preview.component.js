@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { Label } from '../../ui/label.ui';
 import { Dimensions } from 'react-native';
+import { getDimension } from '../../data/DimensionData';
 
 
 const PreviewSection = (
@@ -17,7 +18,7 @@ const PreviewSection = (
         <View
             style={{
                 width: '100%',
-                height: screenHeight > 850 ? 240 : 200,
+                height: getDimension().PREVIEW_SECTION_HEIGHT,
                 backgroundColor: selectedColor.hex,
                 alignItems: 'center',
                 justifyContent: 'center',

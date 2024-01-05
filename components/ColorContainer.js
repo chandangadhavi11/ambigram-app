@@ -3,6 +3,7 @@ import { StyleSheet, View, ImageSourcePropType, Pressable } from "react-native";
 import { ColorsLight } from "../GlobalStyles";
 import { SelectedIcon } from "./icons";
 import { createHapticsImpact } from "../utils/createHapticsImpact";
+import { getDimension } from "../data/DimensionData";
 
 const getStyleValue = (key, value) => {
   if (value === undefined) return;
@@ -37,8 +38,8 @@ const styles = StyleSheet.create({
     borderStyle: "solid",
     borderColor: ColorsLight.colorGray_100,
     borderWidth: 0.5,
-    width: 38,
-    height: 38,
+    width: getDimension().COLOR_CONTAINER_SIZE,
+    height: getDimension().COLOR_CONTAINER_SIZE,
     zIndex: 0,
     display: "flex",
     alignItems: "center",

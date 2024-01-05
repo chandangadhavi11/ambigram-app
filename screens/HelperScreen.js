@@ -22,6 +22,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import ModalContainer from '../components/modal/container.modal';
 import { setCredit, useCredit } from '../redux/reducers/main.reducer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getDimension } from '../data/DimensionData';
 
 
 const MyForm = () => {
@@ -32,18 +33,12 @@ const MyForm = () => {
     const { firstWord, secondWord, isError, errorMessage, errorInput } = useSelector(state => state.main);
 
     const handleGenerateAmbigram = () => {
-        // //console.log("generate ambigram");
+        //console.log("generate ambigram");
         dispatch(useCredit());
-
-        AsyncStorage.getItem('ambigram-credits').then((data) => {
-            //console.log(data, typeof data);
-        }).catch((err) => {
-            //console.log(err);
-        });
     }
 
     const handleClearPreview = () => {
-        //console.log("clear preview");
+        console.log("clear preview");
     }
 
 
@@ -61,7 +56,7 @@ const MyForm = () => {
         });
 
         AsyncStorage.getItem('ambigram-selected-color').then((data) => {
-            console.log(data);
+            // console.log(data);
             if (data === null || data === undefined) {
                 AsyncStorage.setItem('ambigram-selected-color', JSON.stringify(selectedColor));
             } else {
@@ -80,7 +75,7 @@ const MyForm = () => {
             }}
             scrollEnabled={false}>
             <SafeAreaView>
-                <Container.FullWidthSpaceBetween paddingHorizontal={24} paddingTop={16}>
+                <Container.FullWidthSpaceBetween paddingHorizontal={24} paddingTop={getDimension().x16}>
                     <Container.Column gap={4}>
                         <Label color={getColor(themeMode).tertiary}>create your own</Label>
                         <Heading>ambigram</Heading>
@@ -88,7 +83,7 @@ const MyForm = () => {
                     <ModeButton />
                 </Container.FullWidthSpaceBetween>
 
-                <Container fullWidth marginTop={24}>
+                <Container fullWidth marginTop={getDimension().x16}>
                     <ScrollView
                         style={{ marginHorizontal: 24, overflow: 'visible' }}
                         horizontal={true}
@@ -114,16 +109,16 @@ const MyForm = () => {
                 </Container>
 
 
-                <Container fullWidth paddingHorizontal={24} marginTop={24}>
+                <Container fullWidth paddingHorizontal={24} marginTop={getDimension().x24}>
                     {/* Preview is here */}
                     <PreviewSection />
                 </Container>
 
 
                 {/* Color Selection */}
-                <Container.Column gap={16} marginTop={16}>
+                <Container.Column gap={getDimension().x16} marginTop={getDimension().x16}>
                     <Container.FullWidthSpaceBetween paddingHorizontal={24}>
-                        <Container.Row gap={4}>
+                        <Container.Row gap={6} centerItems>
                             <BGIcon />
                             <Label color={getColor(themeMode).primary}>background color</Label>
                         </Container.Row>
@@ -149,7 +144,7 @@ const MyForm = () => {
                 </Container.Column>
 
                 {/* Text Input */}
-                <Container.Column fullWidth gap={12} paddingHorizontal={24} marginTop={24}>
+                <Container.Column fullWidth gap={getDimension().x12} paddingHorizontal={24} marginTop={getDimension().x24}>
                     <InputText placeholder='ENTER FIRST WORD' />
                     <InputText placeholder='ENTER SECOND WORD (OPTIONAL)' />
                 </Container.Column>
@@ -163,7 +158,7 @@ const MyForm = () => {
                 </Container.FullWidthSpaceBetween>
 
                 {/* Save Button */}
-                <Container.Column marginHorizontal={24} marginTop={16} gap={12}>
+                <Container.Column marginHorizontal={24} marginTop={getDimension().x12} gap={12}>
                     <Button title="GENERATE" onPress={handleGenerateAmbigram} />
                     <Button title="CLEAR PREVIEW" onPress={handleClearPreview} />
                 </Container.Column>

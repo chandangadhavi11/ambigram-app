@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import MyForm from "./screens/HelperScreen";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Dimensions } from 'react-native';
 
 
 
@@ -19,6 +20,8 @@ const App = () => {
       setDataLoaded(true);
     });
   }, []);
+
+  // console.log(Dimensions.get('screen').height);
 
 
 
